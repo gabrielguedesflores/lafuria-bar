@@ -1,0 +1,4 @@
+{
+    "watch": ["*.{js,json}", "routes/*", "public/*"],
+    "legacyWatch": true
+}
