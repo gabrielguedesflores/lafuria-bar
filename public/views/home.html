@@ -155,33 +155,7 @@
         </div>
         <br />
         <div class="row row-cols-1 row-cols-md-3 g-4 buildCards">
-          <div class="col">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">Nome da Comanda 1</h5>
-                <p class="card-text">Detalhes da Comanda 1.</p>
-                <p class="card-text">R$ 54,90</p>
-              </div>
-              <div class="card-footer">
-                <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#openDetailsModal">
-                  <small class="text-muted">Abrir detalhes</small>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">Nome da Comanda 1</h5>
-                <p class="card-text">Detalhes da Comanda 1.</p>
-                <p class="card-text">R$ 54,90</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">Abrir detalhes</small>
-              </div>
-            </div>
-          </div>
-          <!-- Adicione mais cards conforme necessário -->
+          <!-- As comandas abertas serão inseridas aqui -->
         </div>
       </main>
 
@@ -206,7 +180,6 @@
 
     </div>
   </div>
-
 
   <!-- Modal para "Abrir Comanda" -->
   <div class="modal fade" id="addOrderModal" tabindex="-1" aria-labelledby="addOrderModalLabel" aria-hidden="true">
@@ -250,7 +223,7 @@
               <!-- Os conjuntos de campos de item serão adicionados aqui -->
             </div>
             <div class="col-12">
-              <button type="button" class="btn btn-primary" id="addItemBtn">Adicionar Item</button>
+              <button type="button" class="btn btn-primary" id="addItemBtn"><i class="fas fa-plus"></i> Adicionar Item</button>
             </div>
           </form>
         </div>
@@ -262,21 +235,19 @@
     </div>
   </div>
 
-  <!-- Modal para "Abrir Detalhes" -->
-  <div class="modal fade" id="openDetailsModal" tabindex="-1" aria-labelledby="openDetailsModalLabel"
-    aria-hidden="true">
+  <!-- Modal -->
+  <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="openDetailsModalLabel">Detalhes da Comanda</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          <h5 class="modal-title" id="orderDetailsModalLabel">Detalhes do Pedido</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <!-- Coloque aqui os detalhes da comanda -->
+        <div class="modal-body" id="orderDetailsModalBody">
+          <!-- As informações do pedido serão inseridas aqui -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          <button type="button" class="btn btn-primary">Salvar alterações</button>
         </div>
       </div>
     </div>
