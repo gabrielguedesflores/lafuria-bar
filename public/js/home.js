@@ -253,7 +253,7 @@ const buildOrder = (order) => {
         <div class="col">
             <div class="card h-100">
                 <div class="card-body">
-                <h5 class="card-title">${order.customer}</h5>
+                <h5 class="card-title"><i class="fas fa-user"></i> ${order.customer}</h5>
                 <p class="card-text">${order.notes}</p>
                 <p class="card-text">${order.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
                 </div>

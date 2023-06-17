@@ -21,6 +21,10 @@ router.get('/configuracoes', (req, res) => {
     res.sendFile('settings.html', {root: 'public/views'});
 });
 
+router.get('/login', (req, res) => {
+    res.sendFile('login.html', {root: 'public/views'});
+});
+
 router.get('/sair', (req, res) => {
     res.sendFile('logout.html', {root: 'public/views'});
 });
