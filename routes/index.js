@@ -5,12 +5,24 @@ router.get('/', (req, res) => {
     res.sendFile('home.html', {root: 'public/views'});
 });
 
-router.get('/products', (req, res) => {
+router.get('/comandas', (req, res) => {
+    res.sendFile('orders.html', {root: 'public/views'});
+});
+
+router.get('/produtos', (req, res) => {
     res.sendFile('products.html', {root: 'public/views'});
 });
 
-router.get('/reports', (req, res) => {
+router.get('/relatorios', (req, res) => {
     res.sendFile('reports.html', {root: 'public/views'});
+});
+
+router.get('/configuracoes', (req, res) => {
+    res.sendFile('settings.html', {root: 'public/views'});
+});
+
+router.get('/sair', (req, res) => {
+    res.sendFile('logout.html', {root: 'public/views'});
 });
 
 module.exports = router;

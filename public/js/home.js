@@ -61,7 +61,6 @@ const handlers = async () => {
 			const product_id = $row.find('select').val();
 			const quantity = Number($row.find('input[type="number"]').val());
 			const price = Number($row.find('select option:selected').data('price'));
-
 			items.push({
 				product_id,
 				quantity,
@@ -77,7 +76,6 @@ const handlers = async () => {
 			notes,
 			date
 		};
-		console.log(orderData);
 		const response = await createOrder(orderData);
 		if (response) {
 			toastr.success("Pedido criado com sucesso!")
@@ -165,10 +163,7 @@ const handlers = async () => {
 	$(document).on('submit', '#editOrderForm', async function (e) {
 		e.preventDefault();
 		const orders = JSON.parse($("#ordersInstance").val())
-		// Obtendo o ID do pedido
 		const orderId = $('#editOrderForm-input_id').val();
-	
-		// Obtendo as novas informações do formulário
 		const newCustomer = $('#editOrderForm-inputCustomer').val();
 		const newNotes = $('#editOrderForm-inputNotes').val();
 		const newStatus = $('#editOrderForm-inputStatus').val();
@@ -181,16 +176,12 @@ const handlers = async () => {
 			const product_id = $row.find('select').val();
 			const quantity = Number($row.find('input[type="number"]').val());
 			const price = Number($row.find('select option:selected').data('price'));
-	
 			items.push({
 				product_id,
 				quantity,
 				price,
 			});
 		});
-
-		console.log('items', items);
-	
 		// Montando o objeto do pedido atualizado
 		const updatedOrder = {
 			_id: orderId,
@@ -200,8 +191,6 @@ const handlers = async () => {
 			total: newTotal,
 			items: items
 		};
-		console.log('updatedOrder', updatedOrder);
-	
 		try {
 			const { data } = await axios.put(baseUrl + '/orders/' + orderId, updatedOrder);
 			location.reload();
@@ -209,8 +198,7 @@ const handlers = async () => {
 		} catch (error) {
 			console.error(error);
 		}
-	
-		// $('#orderDetailsModal').modal('hide');
+		$('#orderDetailsModal').modal('hide');
 	});
 	
 	$(document).on('click', '#editOrderForm-addNewItem', async function () {
