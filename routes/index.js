@@ -5,7 +5,7 @@ const ensureAuthenticated = require('./../middleware').ensureAuthenticated;
 router.post('/start-session', (req, res) => {
     req.session.isAuthenticated = true;
     res.cookie('userid', req.body.userid);  
-    res.redirect('/login');
+    res.redirect('/');
 });
 
 router.get('/sair', (req, res) => {
