@@ -20,6 +20,14 @@ const handlers = () => {
 		axios.post(`${BASE_URL}/users`, data)
 			.then(response => {
 				console.log('Success:', response.data);
+				axios.post(`${window.location.origin}/start-session`, { userid: response.data._id })
+					.then(response => {
+						console.log('Session started:', response.data);
+						window.location.replace("/");  // Add this line to redirect to the home page
+					})
+					.catch((error) => {
+						console.error('Error:', error);
+					});
 			})
 			.catch((error) => {
 				console.error('Error:', error);
