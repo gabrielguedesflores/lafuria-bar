@@ -13,6 +13,6 @@ app.use(session({
 app.use(express.static('public'));
 app.use('/', routes);
 
-app.listen(8080, () => {
-    console.log('App listening on port 8080!');
+app.listen(process.env.PORT || 3000, () => {
+    console.log('App listening...');
 });
