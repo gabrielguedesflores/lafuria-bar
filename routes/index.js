@@ -15,10 +15,10 @@ router.get('/sair', (req, res) => {
         }
         res.clearCookie('connect.sid');
         res.clearCookie('userid'); 
-        res.send({ success: true });
+        res.redirect('/login');
     });
-    res.redirect('/login');
 });
+
 
 router.post('/end-session', (req, res) => {
     req.session.destroy(err => {

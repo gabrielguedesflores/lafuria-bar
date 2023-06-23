@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    axios.post('http://localhost:8080/end-session', {}, { withCredentials: true })
+    axios.post(`http://${window.location.hostname}/end-session`, {}, { withCredentials: true })
         .then(response => {
             console.log('Logout successful:', response.data);
             window.location.href = '/login';

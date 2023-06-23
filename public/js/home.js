@@ -7,7 +7,7 @@ $(document).ready(function () {
 	controllerOrders();
 	handlers();
 });
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'https://lafuria-api-gabrielguedesflores.vercel.app';
 
 // Controllers
 const handlers = async () => {

@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	userController()
 });
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'https://lafuria-api-gabrielguedesflores.vercel.app';
 const userController = async () => {
 	const userid = getCookie('userid');
 	const user = await getUser(userid);

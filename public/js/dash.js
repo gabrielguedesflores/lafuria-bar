@@ -1,7 +1,7 @@
 // Função para obter as vendas
 const getOrders = async () => {
 	try {
-		const { data } = await axios.get("http://localhost:3000/orders");
+		const { data } = await axios.get("https://lafuria-api-gabrielguedesflores.vercel.app/orders");
 		return data;
 	} catch (error) {
 		console.error(error);
@@ -10,7 +10,7 @@ const getOrders = async () => {
 
 const getProducts = async () => {
 	try {
-		const { data } = await axios.get("http://localhost:3000/products");
+		const { data } = await axios.get("https://lafuria-api-gabrielguedesflores.vercel.app/products");
 		return data
 	} catch (error) {
 		console.error(error);

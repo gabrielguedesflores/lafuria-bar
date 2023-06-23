@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 let ordersList = []; // Variável global para armazenar a lista de comandas
 
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'https://lafuria-api-gabrielguedesflores.vercel.app';
 
 const getOrders = async () => {
 	try {

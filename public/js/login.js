@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	handlers();
 });
-
+const BASE_URL = 'https://lafuria-api-gabrielguedesflores.vercel.app'
 const handlers = () => {
 	$('#registerSubmit').click(function () {
 		var username = $('#registerUsername').val();
@@ -17,7 +17,7 @@ const handlers = () => {
 			dateCreated: new Date().toISOString()
 		};
 
-		axios.post('http://localhost:3000/users', data)
+		axios.post(`${BASE_URL}/users`, data)
 			.then(response => {
 				console.log('Success:', response.data);
 			})
@@ -30,8 +30,7 @@ const handlers = () => {
 		var email = $('#inputEmail').val();
 		var password = $('#inputPassword').val();
 		var hashedPassword = CryptoJS.SHA256(password);
-		console.log(email, password, hashedPassword);
-		axios.get('http://localhost:3000/users')
+		axios.get(`${BASE_URL}/users`)
 			.then(response => {
 				var users = response.data;
 				var user = users.find(u => u.email === email && u.password === hashedPassword.toString());
@@ -39,7 +38,7 @@ const handlers = () => {
 				console.log(user._id);
 				if (user) {
 					console.log('Login successful:', user);
-					axios.post('http://localhost:8080/start-session', { userid: user._id })
+					axios.post(`${window.location.origin}/start-session`, { userid: user._id })
 						.then(response => {
 							console.log('Session started:', response.data);
 							window.location.replace("/");  // Add this line to redirect to the home page

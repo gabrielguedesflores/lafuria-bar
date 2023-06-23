@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 let productsList = []; // Variável global para armazenar a lista de produtos
 
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'https://lafuria-api-gabrielguedesflores.vercel.app';
 
 const handler = async() => {
 	$('#editProductForm').on('submit', async function (e) {
