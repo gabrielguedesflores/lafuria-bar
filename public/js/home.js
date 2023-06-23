@@ -1,9 +1,9 @@
 $(document).ready(function () {
 	$('.buildCards').html(`
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Carregando...</span>
-        </div>
-    `);
+		<div class="spinner-border text-primary" role="status">
+			<span class="visually-hidden">Carregando...</span>
+		</div>
+	`);
 	controllerOrders();
 	handlers();
 });
@@ -92,12 +92,11 @@ const handlers = async () => {
 		const productOptions = products.map(product =>
 			`<option value="${product._id}" data-price="${product.price}">${product.name} - ${product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} Un</option>`
 		).join('');
-		console.log('productOptions', productOptions);
 
 		let itemFieldsHtml = '';
-			order.items.forEach((item, index) => {
+		order.items.forEach((item, index) => {
 			const productOptions = products.map(product =>
-					`<option value="${product._id}" data-price="${product.price}" ${product._id === item.product_id ? 'selected' : ''}>${product.name} - ${product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} Un</option>`
+				`<option value="${product._id}" data-price="${product.price}" ${product._id === item.product_id ? 'selected' : ''}>${product.name} - ${product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} Un</option>`
 			).join('');
 			itemFieldsHtml += `
 				<div class="row" id="editOrderItem${index}">
@@ -114,7 +113,7 @@ const handlers = async () => {
 				</div></ br>
 			`;
 		});
-	
+
 		const orderDetailsHtml = `
 			<form id="editOrderForm" class="row g-3">
 				<div class="col-6" style="display: none;" id="div-input_id">
@@ -168,7 +167,7 @@ const handlers = async () => {
 		const newNotes = $('#editOrderForm-inputNotes').val();
 		const newStatus = $('#editOrderForm-inputStatus').val();
 		const newTotal = parseFloat($('#editOrderForm-inputTotal').val().replace('R$', '').replace(',', '.'));
-	
+
 		// Iterando pelos itens
 		let items = [];
 		$('#editOrderItems .row').each(function () {
@@ -200,7 +199,7 @@ const handlers = async () => {
 		}
 		$('#orderDetailsModal').modal('hide');
 	});
-	
+
 	$(document).on('click', '#editOrderForm-addNewItem', async function () {
 		const products = await getProducts();
 		const productOptions = products.map(product =>
@@ -238,13 +237,22 @@ const handlers = async () => {
 
 const controllerOrders = async () => {
 	const orders = await getOrders();
-	console.log(orders);
+	console.log('orders', orders);
 	$('.buildCards').empty();
 	orders.forEach(order => {
 		if (order.status === 'open') {
 			$('.buildCards').append(buildOrder(order));
 		}
 	});
+
+	if ($('.buildCards').children().length === 0) {
+		// If not, add a Bootstrap alert message
+		$('.buildCards').append(`
+				<div class="alert alert-info" role="alert">
+						Não há pedidos abertos no momento.
+				</div>
+		`);
+	}
 };
 
 // Builds
@@ -295,7 +303,6 @@ const createOrder = async (order) => {
 		return data;
 	} catch (error) {
 		console.error(error);
-		// Você pode querer verificar o formato do erro retornado pela API para melhor manipulá-lo
 		toastr("Erro ao criar o pedido: " + error.message);
 	}
 }
